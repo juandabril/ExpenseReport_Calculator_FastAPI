@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Gastos Compartidos</title>
+</head>
+<body>
+    <h1>Calculadora de Gastos Compartidos</h1>
+    
+    <div id="expenses-list">
+        {% for expense in expenses %}
+        <div class="expense-item">
+            <strong>{{ expense['payer'] }}</strong>: {{ expense['description'] }} - ${{ expense['amount'] }}
+        </div>
+        {% endfor %}
+    </div>
+    
+    <form action="/add_expense" method="post">
+        <input type="text" name="payer" placeholder="Quién pagó">
+        <input type="text" name="description" placeholder="Descripción del gasto">
+        <input type="number" step="0.01" name="amount" placeholder="Monto">
+        <button type="submit">Agregar Gasto</button>
+    </form>
+</body>
+</html>
